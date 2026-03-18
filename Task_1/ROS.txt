@@ -1,0 +1,13 @@
+ROS (Robot Operating System)
+
+ROS is an open-source framework used for developing robot software. It is not a real operating system, but it provides tools, libraries, and conventions to simplify the process of creating complex robotic systems.
+
+ROS is based on the concept of nodes. A node is a small program that performs a specific task, such as controlling a motor or reading data from a sensor. These nodes communicate with each other using topics, services, and messages.
+
+One of the main advantages of ROS is modularity, which allows developers to reuse code and build scalable systems easily. It also supports multiple programming languages like Python and C++.
+
+Gazebo Simulation:
+
+Gazebo is a powerful simulation tool that is commonly used with ROS. It allows developers to simulate robots in a virtual environment before testing them in real life. In Gazebo, you can create 3D worlds, add robots, sensors, and physics like gravity and collisions.
+
+Using Gazebo helps reduce risks, save time, and test algorithms safely without needing real hardware.

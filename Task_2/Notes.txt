@@ -1,0 +1,16 @@
+1. Finding Largest and Smallest Number
+
+I noticed that Python has built-in functions like max() and min() that can find the largest and smallest number easily
+
+I tried it both ways: once using the built-in functions, and once manually using loops and comparisons
+
+2. Sum of Even Numbers
+
+It calculates the sum of all even numbers from 1 up to that number using a loop and condition of i%2
+
+3. Reversing a Sentence
+
+The program asks the user to enter a sentence.
+I discovered that Python makes it easy to reverse the words with slicing [::-1] and join()
+
+I tried this task in two ways as well: manually with loops, and using Python’s built-in tools

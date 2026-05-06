@@ -1,0 +1,176 @@
+{
+  "drones": [
+    {
+      "id": 1,
+      "battery": 62.54200000000022,
+      "position": [
+        15,
+        8
+      ],
+      "capacity": 10
+    },
+    {
+      "id": 2,
+      "battery": 80.15200000000021,
+      "position": [
+        15,
+        8
+      ],
+      "capacity": 8
+    },
+    {
+      "id": 3,
+      "battery": 71.5420000000002,
+      "position": [
+        7,
+        14
+      ],
+      "capacity": 5
+    },
+    {
+      "id": 4,
+      "battery": 78.50260000000003,
+      "position": [
+        12,
+        4
+      ],
+      "capacity": 12
+    },
+    {
+      "id": 5,
+      "battery": 53.357200000000354,
+      "position": [
+        18,
+        18
+      ],
+      "capacity": 6
+    },
+    {
+      "id": 6,
+      "battery": 68.68880000000003,
+      "position": [
+        2,
+        16
+      ],
+      "capacity": 9
+    },
+    {
+      "id": 7,
+      "battery": 59.56480000000009,
+      "position": [
+        11,
+        13
+      ],
+      "capacity": 7
+    },
+    {
+      "id": 8,
+      "battery": 72.92920000000004,
+      "position": [
+        7,
+        19
+      ],
+      "capacity": 15
+    },
+    {
+      "id": 9,
+      "battery": 54.056000000000175,
+      "position": [
+        16,
+        3
+      ],
+      "capacity": 11
+    },
+    {
+      "id": 10,
+      "battery": 61.22800000000011,
+      "position": [
+        9,
+        17
+      ],
+      "capacity": 13
+    }
+  ],
+  "packages": [
+    {
+      "package_id": 101,
+      "weight": 3,
+      "destination": [
+        10,
+        10
+      ]
+    },
+    {
+      "package_id": 102,
+      "weight": 2,
+      "destination": [
+        15,
+        8
+      ]
+    },
+    {
+      "package_id": 103,
+      "weight": 5,
+      "destination": [
+        7,
+        14
+      ]
+    },
+    {
+      "package_id": 104,
+      "weight": 1,
+      "destination": [
+        12,
+        4
+      ]
+    },
+    {
+      "package_id": 201,
+      "weight": 2,
+      "destination": [
+        18,
+        18
+      ]
+    },
+    {
+      "package_id": 202,
+      "weight": 4,
+      "destination": [
+        2,
+        16
+      ]
+    },
+    {
+      "package_id": 203,
+      "weight": 6,
+      "destination": [
+        11,
+        13
+      ]
+    },
+    {
+      "package_id": 204,
+      "weight": 1,
+      "destination": [
+        7,
+        19
+      ]
+    },
+    {
+      "package_id": 205,
+      "weight": 5,
+      "destination": [
+        16,
+        3
+      ]
+    },
+    {
+      "package_id": 206,
+      "weight": 3,
+      "destination": [
+        9,
+        17
+      ]
+    }
+  ]
+}

@@ -51,8 +51,7 @@ def generate_maze_map(grid, start, destination):
                 
                 # Create grid lines with gaps
                 if row % 2 == 0 or col % 2 == 0:
-                    # 65% chance to place a wall, creating paths and dead ends
-                    if random.random() < 0.65:
+                    if random.random() < 0.55:
                         zones.append(position)
 
         grid.add_no_fly_cluster(zones)
@@ -87,7 +86,6 @@ def main():
             try:
                 index = int(input("\nSelect drone number: ")) - 1
                 selected_drone = deepcopy(fleet.drones[index])
-                # Save index to update original later
                 selected_drone._original_index = index 
                 print(f"\nSelected Drone {selected_drone.id}")
             except:
@@ -123,7 +121,6 @@ def main():
             sim = Simulation(fleet=sim_fleet, grid=grid, time_step=0.2)
             sim.run()
 
-            # --- NEW: Persist battery usage back to the main fleet ---
             orig_idx = selected_drone._original_index
             fleet.drones[orig_idx].battery = sim_fleet.drones[0].battery
             fleet.drones[orig_idx].position = sim_fleet.drones[0].position
@@ -134,14 +131,12 @@ def main():
             best_performance(fleet)
 
         elif choice == "5":
-            # --- NEW: Charge all drones ---
             for drone in fleet.drones:
                 drone.battery = 100.0
             fleet.save_to_json(FLEET_FILE)
             print("\n[SUCCESS] All drones have been charged to 100%.")
 
         elif choice == "6":
-            # --- NEW: Simulate All Drones Sequentially ---
             print("\nStarting Sequential Simulation for All Drones...")
             
             for i, drone in enumerate(fleet.drones):
@@ -149,9 +144,20 @@ def main():
                     print(f"\nSkipping Drone {drone.id} (Low Battery).")
                     continue
                 
-                # Pick a package (modulo ensures we wrap around if fewer packages than drones)
-                pkg_index = i % len(fleet.packages)
-                current_pkg = deepcopy(fleet.packages[pkg_index])
+                found_pkg = False
+                for offset in range(len(fleet.packages)):
+                    pkg_index = (i + offset) % len(fleet.packages)
+                    pkg = fleet.packages[pkg_index]
+                    
+                    if tuple(pkg.destination) != tuple(drone.position):
+                        current_pkg = deepcopy(pkg)
+                        found_pkg = True
+                        break
+                
+                if not found_pkg:
+                    print(f"\nSkipping Drone {drone.id} (No valid package with different destination).")
+                    continue
+
                 current_pkg.delivered = False
                 current_pkg.mark_delivered = lambda p=current_pkg: setattr(p, "is_delivered", True)
                 
@@ -164,11 +170,9 @@ def main():
                 sim_fleet.add_package(current_pkg)
 
                 print(f"\n--- Running Simulation for Drone {drone.id} ---")
-                # Run with auto_close=True and faster time_step
                 sim = Simulation(fleet=sim_fleet, grid=grid, time_step=0.05)
                 sim.run(auto_close=True) 
 
-                # Persist state
                 drone.battery = sim_fleet.drones[0].battery
                 drone.position = sim_fleet.drones[0].position
             

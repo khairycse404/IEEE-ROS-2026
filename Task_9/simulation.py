@@ -24,13 +24,12 @@ class Simulation:
     def move_drone_along_path(self, drone, package, path, ax):
         for step in path[1:]:
             
-            # --- NEW: Battery Threshold Check ---
             if drone.battery < LOW_BATTERY_THRESHOLD:
                 print(f"\n[URGENT] Drone {drone.id} battery below 10% ({drone.battery:.1f}%)! Returning to base.")
                 drone.return_to_base()
                 self.render(ax)
                 plt.pause(self.time_step)
-                return  # Abort delivery
+                return  
 
             old_position = drone.position
             drone.move(step)
@@ -72,7 +71,6 @@ class Simulation:
 
             self.move_drone_along_path(assigned_drone, package, path, ax)
 
-        # --- NEW: Auto close for sequential processing ---
         if auto_close:
             plt.pause(1.5)
             plt.close(fig)
@@ -106,7 +104,6 @@ class Simulation:
             x = drone.position[1] + 0.5
             y = drone.position[0] + 0.5
 
-            # Base indicator
             base = patches.Circle((0.5, 0.5), 0.3, facecolor="gray", alpha=0.5)
             ax.add_patch(base)
 

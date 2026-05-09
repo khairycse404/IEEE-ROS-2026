@@ -1,0 +1,21 @@
+1. Nodes
+
+a) A node is a single executable program that performs a specific task
+
+b) For example, one node can control a robot, another can process sensor data, and another can publish messages
+
+c) Each node can communicate with other nodes
+
+2. Topics
+
+a) A topic is a communication channel used for continuous data exchange between nodes using a publish/subscribe
+
+b) One node publishes data to a topic and other nodes subscribe to receive it
+
+c) It is used for streaming data like sensor readings, robot position, or velocity commands
+
+3. Services
+
+a) A service is a communication method used for request and response interactions
+Unlike topics, it is not continuous One node sends a request, and another node replies with a response
+

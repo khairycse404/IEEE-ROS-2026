@@ -1,0 +1,25 @@
+<launch>
+    <arg name="safety_zone" default="2.0" />
+    <arg name="r1_x" default="0.0" />
+    <arg name="r1_y" default="0.0" />
+    <arg name="r1_prio" default="1" />
+    <arg name="r2_x" default="3.0" />
+    <arg name="r2_y" default="0.0" />
+    <arg name="r2_prio" default="2" />
+
+    <node pkg="autonomous_traffic_manager" exec="traffic_manager" name="traffic_manager" emulate_tty="true">
+        <param name="safety_zone" value="$(var safety_zone)" />
+    </node>
+       
+    <node pkg="autonomous_traffic_manager" exec="fleet_emulator" name="fleet_emulator" namespace="robot1" emulate_tty="true">
+        <param name="x" value="$(var r1_x)" />
+        <param name="y" value="$(var r1_y)" />
+        <param name="priority" value="$(var r1_prio)" />
+    </node>
+
+    <node pkg="autonomous_traffic_manager" exec="fleet_emulator" name="fleet_emulator" namespace="robot2" emulate_tty="true">
+        <param name="x" value="$(var r2_x)" />
+        <param name="y" value="$(var r2_y)" />
+        <param name="priority" value="$(var r2_prio)" />
+    </node>
+</launch>

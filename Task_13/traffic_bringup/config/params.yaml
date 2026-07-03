@@ -1,0 +1,17 @@
+# traffic_manager:
+#   ros__parameters:
+#     safety_zone: 2.0
+
+# robot1:
+#   fleet_emulator:
+#     ros__parameters:
+#       x: 0.0
+#       y: 0.0
+#       priority: 1
+
+# robot2:
+#   fleet_emulator:
+#     ros__parameters:
+#       x: 3.0
+#       y: 0.0
+#       priority: 2

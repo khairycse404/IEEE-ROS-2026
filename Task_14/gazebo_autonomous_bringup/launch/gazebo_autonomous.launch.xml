@@ -1,0 +1,27 @@
+<launch>
+
+    <let name="world_path" 
+         value="$(find-pkg-share gazebo_autonomous_bringup)/world/custom_world.sdf"/>
+
+    <include file="$(find-pkg-share ros_gz_sim)/launch/gz_sim.launch.py">
+        <arg name="gz_args" value="$(var world_path) -r"/>
+    </include>
+
+<include file="$(find-pkg-share turtlebot3_gazebo)/launch/spawn_turtlebot3.launch.py">
+        <arg name="x_pose" value="-4.5"/>
+        <arg name="y_pose" value="-0.25"/>
+        <arg name="z_pose" value="0.1"/>
+    </include>
+
+    <node pkg="gazebo_autonomous_pkg" 
+          exec="autonomous_mover" 
+          name="autonomous_mover" 
+          output="screen" />
+
+    <node pkg="ros_gz_bridge" 
+          exec="parameter_bridge" 
+          name="cmd_vel_bridge" 
+          args="/cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist" 
+          output="screen" />
+
+</launch>
